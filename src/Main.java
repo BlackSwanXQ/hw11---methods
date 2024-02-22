@@ -13,8 +13,14 @@ public class Main {
         getUpdatePhone(clientOS, clientDeviceYear);
 //task3
         System.out.println("task3");
-        int deliveryDistance = 99;
-        deliveryTime(deliveryDistance);
+
+        int deliveryDistance = 110;
+        int deliveryTime = deliveryTime(deliveryDistance);
+        if (deliveryTime == 0) {
+            System.out.println("Свыше 100 км доставки нет.");
+        } else {
+            System.out.println("Потребуется дней: " + deliveryTime);
+        }
     }
 
     public static void getLeapYear(int year) {
@@ -40,16 +46,17 @@ public class Main {
         }
     }
 
-    public static void deliveryTime(int deliveryDistance) {
+    public static int deliveryTime(int deliveryDistance) {
         int time = 1;
         if (deliveryDistance <= 20) {
-            System.out.println("Потребуется дней: " + time);
+            return time;
         } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
-            System.out.println("Потребуется дней: " + (time + 1));
+            return time + 1;
         } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
-            System.out.println("Потребуется дней: " + (time + 2));
+            return time += 2;
         } else {
-            System.out.println("Свыше 100 км доставки нет.");
+            return 0;
         }
+
     }
 }
